@@ -11,15 +11,3 @@ Currently, two official plugins are available:
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
-## Deploying to GitHub Pages
-
-1. Install dependencies:
-   ```sh
-   npm install
-   ```
-2. Deploy to GitHub Pages:
-   ```sh
-   npm run deploy
-   ```
-
-This will build the project and publish the static site to GitHub Pages. Make sure to replace <your-github-username> and <your-repo-name> in package.json with your actual GitHub username and repository name.
