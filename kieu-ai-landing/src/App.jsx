@@ -1,24 +1,44 @@
 import { useState } from 'react';
 
 function App() {
-  // Newsletter form state
-  const [email, setEmail] = useState('');
-  const [newsletterStatus, setNewsletterStatus] = useState(null);
+  // Newsletter form state for hero section
+  const [emailHero, setEmailHero] = useState('');
+  const [newsletterStatusHero, setNewsletterStatusHero] = useState(null);
+  // Newsletter form state for CTA section
+  const [emailCTA, setEmailCTA] = useState('');
+  const [newsletterStatusCTA, setNewsletterStatusCTA] = useState(null);
 
-  const handleNewsletterSubmit = async (e) => {
+  const handleNewsletterSubmitHero = async (e) => {
     e.preventDefault();
-    setNewsletterStatus('loading');
+    setNewsletterStatusHero('loading');
     try {
-      const res = await fetch('http://127.0.0.1:8000/newsletter', {
+      const res = await fetch('https://chrisnnguyen.github.io/KieuAI/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: emailHero }),
       });
       const data = await res.json();
-      setNewsletterStatus(data.message || 'Signed up successfully!');
-      setEmail('');
+      setNewsletterStatusHero(data.message || 'Signed up successfully!');
+      setEmailHero('');
     } catch {
-      setNewsletterStatus('An error occurred, please try again.');
+      setNewsletterStatusHero('An error occurred, please try again.');
+    }
+  };
+
+  const handleNewsletterSubmitCTA = async (e) => {
+    e.preventDefault();
+    setNewsletterStatusCTA('loading');
+    try {
+      const res = await fetch('https://chrisnnguyen.github.io/KieuAI/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailCTA }),
+      });
+      const data = await res.json();
+      setNewsletterStatusCTA(data.message || 'Signed up successfully!');
+      setEmailCTA('');
+    } catch {
+      setNewsletterStatusCTA('An error occurred, please try again.');
     }
   };
 
@@ -46,12 +66,12 @@ function App() {
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-lg">
             Stuck finding the right words? Get instant help with pronunciation and grammar.
             </p>
-            <form className="flex flex-col sm:flex-row gap-3 mb-3 w-full" onSubmit={handleNewsletterSubmit}>
+            <form className="flex flex-col sm:flex-row gap-3 mb-3 w-full" onSubmit={handleNewsletterSubmitHero}>
               <input
                 type="email"
                 placeholder="Enter your email for early access"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
+                value={emailHero}
+                onChange={e => setEmailHero(e.target.value)}
                 required
                 className="flex-1 px-4 py-3 rounded-lg border border-[var(--color-lilac-400)] bg-[#23263a] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-lilac-400)] shadow"
               />
@@ -59,9 +79,9 @@ function App() {
                 style={{ background: 'var(--color-lilac-500)', color: 'white' }}
               >Get Started</button>
             </form>
-            {newsletterStatus && (
-              <div style={{ background: '#23263a', borderRadius: '0.5rem', padding: '0.5rem 1rem', marginBottom: '0.5rem', color: newsletterStatus === 'loading' ? 'var(--color-lilac-400)' : newsletterStatus.includes('successfully') ? '#4ade80' : '#f87171' }}>
-                {newsletterStatus === 'loading' ? 'Sending...' : newsletterStatus}
+            {newsletterStatusHero && (
+              <div style={{ background: '#23263a', borderRadius: '0.5rem', padding: '0.5rem 1rem', marginBottom: '0.5rem', color: newsletterStatusHero === 'loading' ? 'var(--color-lilac-400)' : newsletterStatusHero.includes('successfully') ? '#4ade80' : '#f87171' }}>
+                {newsletterStatusHero === 'loading' ? 'Sending...' : newsletterStatusHero}
               </div>
             )}
             <div className="flex items-center gap-2 text-sm text-gray-400 mt-2">
@@ -163,12 +183,12 @@ function App() {
         <div className="w-full max-w-3xl px-4 mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to start speaking?</h2>
           <p className="text-lg text-gray-300 mb-8">Be among the first to try our AI Vietnamese tutor. Join the waitlist.</p>
-          <form className="flex flex-col sm:flex-row gap-3 mb-4 w-full justify-center" onSubmit={handleNewsletterSubmit}>
+          <form className="flex flex-col sm:flex-row gap-3 mb-4 w-full justify-center" onSubmit={handleNewsletterSubmitCTA}>
             <input
               type="email"
               placeholder="Enter your email for early access"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              value={emailCTA}
+              onChange={e => setEmailCTA(e.target.value)}
               required
               className="flex-1 px-4 py-3 rounded-lg border border-[var(--color-lilac-400)] bg-[#23263a] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-lilac-400)] shadow"
             />
@@ -176,6 +196,11 @@ function App() {
               style={{ background: 'var(--color-lilac-500)', color: 'white' }}
             >Get Early Access</button>
           </form>
+          {newsletterStatusCTA && (
+            <div style={{ background: '#23263a', borderRadius: '0.5rem', padding: '0.5rem 1rem', marginBottom: '0.5rem', color: newsletterStatusCTA === 'loading' ? 'var(--color-lilac-400)' : newsletterStatusCTA.includes('successfully') ? '#4ade80' : '#f87171' }}>
+              {newsletterStatusCTA === 'loading' ? 'Sending...' : newsletterStatusCTA}
+            </div>
+          )}
           <div className="flex flex-wrap gap-4 justify-center text-sm text-gray-400 mb-4">
             <span>✔ Early access to all features</span>
             <span>✔ Exclusive beta tester benefits</span>
