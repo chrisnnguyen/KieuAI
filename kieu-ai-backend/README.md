@@ -1,6 +1,6 @@
 # KieuAI Backend
 
-A FastAPI backend for the KieuAI project.
+A Flask backend for the KieuAI project.
 
 ## Features
 
@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 2. Run the development server:
 ```bash
-uvicorn main:app --reload
+python main.py
 ```
 
 3. The API will be available at `http://localhost:8000`
@@ -38,15 +38,36 @@ uvicorn main:app --reload
 3. Create a new Web Service
 4. Configure the following settings:
    - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+   - **Start Command**: `python main.py`
    - **Environment**: Python 3.11
 
 ## Environment Variables
 
 - `PORT` - Automatically set by Render
 
-## API Documentation
+## API Usage
 
-Once deployed, you can access the interactive API documentation at:
-- Swagger UI: `https://your-app-name.onrender.com/docs`
-- ReDoc: `https://your-app-name.onrender.com/redoc` 
+All endpoints expect JSON data:
+
+### Contact Form
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "message": "Hello!"
+}
+```
+
+### Newsletter
+```json
+{
+  "email": "john@example.com"
+}
+```
+
+### Chat Demo
+```json
+{
+  "message": "Hello AI!"
+}
+``` 

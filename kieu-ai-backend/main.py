@@ -1,54 +1,44 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 
-app = FastAPI(title="KieuAI Backend", version="1.0.0")
+app = Flask(__name__)
+CORS(app)
 
-# Allow CORS for local frontend dev
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+@app.route("/")
+def root():
+    return jsonify({"message": "KieuAI Backend is running!"})
 
-class ContactForm(BaseModel):
-    name: str
-    email: str
-    message: str
+@app.route("/health")
+def health_check():
+    return jsonify({"status": "healthy"})
 
-class NewsletterForm(BaseModel):
-    email: str
-
-class ChatRequest(BaseModel):
-    message: str
-
-@app.get("/")
-async def root():
-    return {"message": "KieuAI Backend is running!"}
-
-@app.get("/health")
-async def health_check():
-    return {"status": "healthy"}
-
-@app.post("/contact")
-async def contact(form: ContactForm):
+@app.route("/contact", methods=["POST"])
+def contact():
+    data = request.get_json()
+    name = data.get("name")
+    email = data.get("email")
+    message = data.get("message")
+    
     # Here you would handle sending an email or storing the message
-    return {"success": True, "message": "Liên hệ của bạn đã được gửi!"}
+    return jsonify({"success": True, "message": "Liên hệ của bạn đã được gửi!"})
 
-@app.post("/newsletter")
-async def newsletter(form: NewsletterForm):
+@app.route("/newsletter", methods=["POST"])
+def newsletter():
+    data = request.get_json()
+    email = data.get("email")
+    
     # Here you would add the email to your newsletter list
-    return {"success": True, "message": "Đăng ký nhận tin thành công!"}
+    return jsonify({"success": True, "message": "Đăng ký nhận tin thành công!"})
 
-@app.post("/chat-demo")
-async def chat_demo(req: ChatRequest):
+@app.route("/chat-demo", methods=["POST"])
+def chat_demo():
+    data = request.get_json()
+    message = data.get("message")
+    
     # Mock AI response
-    return {"reply": f"Bạn vừa nói: {req.message}"}
+    return jsonify({"reply": f"Bạn vừa nói: {message}"})
 
 if __name__ == "__main__":
-    import uvicorn
     port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port) 
+    app.run(host="0.0.0.0", port=port) 
