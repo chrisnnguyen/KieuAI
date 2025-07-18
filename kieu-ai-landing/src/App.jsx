@@ -14,7 +14,7 @@ function App() {
     e.preventDefault();
     setNewsletterStatusHero('loading');
     try {
-      const res = await fetch('https://chrisnnguyen.github.io/KieuAI/api/newsletter', {
+      const res = await fetch('https://kieuai-api.onrender.com/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: emailHero }),
@@ -31,7 +31,7 @@ function App() {
     e.preventDefault();
     setNewsletterStatusCTA('loading');
     try {
-      const res = await fetch('https://chrisnnguyen.github.io/KieuAI/api/newsletter', {
+      const res = await fetch('https://kieuai-api.onrender.com/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: emailCTA }),
