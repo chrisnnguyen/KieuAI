@@ -301,7 +301,7 @@ function App() {
         </div>
       </section>
 
-      {/* # CALL TO ACTION SECTION */}
+      {/* # Newsletter */}
       <section id="cta" className="py-24 w-full" style={{ background: 'var(--color-mid-purple)' }}>
         <div
           ref={ctaRef}
