@@ -59,4 +59,4 @@ async def newsletter(form: NewsletterForm):
 async def chat_demo(req: ChatRequest):
     """Handle chat demo requests"""
     # Mock AI response - in production this would connect to an AI service
-    return {"reply": f"Bạn vừa nói: {req.message}"} 
+    return {"reply": f"Bạn vừa nói: {req.message}"}

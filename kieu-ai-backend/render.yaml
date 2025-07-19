@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: kieu-ai-backend
+    env: python
+    buildCommand: chmod +x build.sh && ./build.sh
+    startCommand: python main.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.7
+      - key: PIP_NO_CACHE_DIR
+        value: 1 
