@@ -1,3 +1,5 @@
+/* # GLOBAL CSS VARIABLES */
+/* CSS custom properties for consistent theming across the application */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -12,6 +14,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  /* # COLOR PALETTE */
+  /* Custom color variables for the purple/lilac theme */
   --color-dark-purple: #12131C;
   --color-mid-purple: #ebecf2;
   --color-lilac-400: #b39ddb;
@@ -19,6 +23,8 @@
   --color-lilac-700: #7e57c2;
 }
 
+/* # LINK STYLING */
+/* Default link styles with hover effects */
 a {
   font-weight: 500;
   color: #646cff;
@@ -28,6 +34,8 @@ a:hover {
   color: #535bf2;
 }
 
+/* # HTML AND BODY STYLING */
+/* Global HTML and body element styling */
 html {
   background: var(--color-dark-purple);
 }
@@ -42,11 +50,15 @@ body {
   overflow-x: hidden;
 }
 
+/* # TYPOGRAPHY */
+/* Heading and text element styling */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
+/* # BUTTON STYLING */
+/* Default button styles with hover and focus states */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -66,14 +78,8 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.opacity-0 { opacity: 0; }
-.opacity-100 { opacity: 1; }
-.translate-y-8 { transform: translateY(3.5rem); }
-.translate-y-0 { transform: translateY(0); }
-.transition-opacity { transition-property: opacity; }
-.transition-transform { transition-property: transform; }
-.duration-1000 { transition-duration: 0.6s; transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
-
+/* # LIGHT MODE OVERRIDES */
+/* Styles for light color scheme preference */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

@@ -1,3 +1,8 @@
+/* # APP-SPECIFIC STYLES */
+/* Component styles for the Kieu AI landing page */
+
+/* # ROOT CONTAINER STYLES */
+/* Main container styling (commented out - using Tailwind instead) */
 /*
 #root {
   max-width: 1280px;
@@ -7,6 +12,8 @@
 }
 */
 
+/* # LOGO ANIMATIONS */
+/* Logo styling with hover effects and spin animation */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -20,6 +27,8 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* # LOGO SPIN ANIMATION */
+/* Keyframes for rotating logo animation */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -29,12 +38,16 @@
   }
 }
 
+/* # REDUCED MOTION SUPPORT */
+/* Respects user's motion preferences */
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
 
+/* # CARD COMPONENTS */
+/* Generic card styling for content containers */
 .card {
   padding: 2em;
 }
@@ -43,6 +56,8 @@
   color: #888;
 }
 
+/* # TESTIMONIALS SECTION */
+/* Styling for customer testimonials display */
 .testimonials {
   background: #fff;
   border-radius: 1.5em;
@@ -68,6 +83,9 @@
   font-size: 0.95em;
   margin-bottom: 1em;
 }
+
+/* # FAQ SECTION */
+/* Frequently asked questions styling */
 .faq {
   background: #fff;
   border-radius: 1.5em;
@@ -86,6 +104,9 @@
 .faq-item strong {
   color: #a259e6;
 }
+
+/* # CONTACT FORM */
+/* Contact form styling and layout */
 .contact {
   background: #fff;
   border-radius: 1.5em;
@@ -136,12 +157,17 @@
   font-weight: bold;
 }
 
+/* # SCROLL CONTAINER */
+/* Main scrollable container with gradient background */
 .scroll {
   min-height: 100vh;
   background: linear-gradient(135deg, #f3e6ff 0%, #e0c3fc 100%);
   color: #4b256d;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
+
+/* # LAYOUT COMPONENTS */
+/* Container and grid layout utilities */
 .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -152,6 +178,9 @@
   flex-wrap: wrap;
   gap: 2rem;
 }
+
+/* # HERO SECTION */
+/* Hero section styling and layout */
 .hero {
   padding: 4rem 0 2rem 0;
   background: none;
@@ -171,6 +200,9 @@
   color: #7c4d99;
   margin-bottom: 2rem;
 }
+
+/* # EMAIL FORM COMPONENTS */
+/* Newsletter signup form styling */
 .email-form {
   display: flex;
   gap: 0.5rem;
@@ -199,6 +231,9 @@
 .email-form button:hover {
   background: #7c4d99;
 }
+
+/* # FORM STATUS MESSAGES */
+/* Success and error message styling */
 .success-message {
   color: #4b256d;
   background: #e0c3fc;
@@ -220,6 +255,9 @@
   color: #7c4d99;
   margin-bottom: 1.5em;
 }
+
+/* # APP PREVIEW COMPONENTS */
+/* Mobile app preview styling */
 .app-preview {
   min-width: 300px;
   display: flex;
@@ -238,6 +276,9 @@
   color: #a259e6;
   font-size: 1.2rem;
 }
+
+/* # FEATURES SECTION */
+/* Features section layout and styling */
 .features {
   padding: 3rem 0 2rem 0;
   background: none;
@@ -248,75 +289,80 @@
   gap: 1.5rem;
   margin-top: 2rem;
 }
-.feature-item {
-  background: #fff;
-  border-radius: 1.5em;
-  box-shadow: 0 2px 16px #e0c3fc40;
-  padding: 1.5em 2em;
-  color: #4b256d;
-  font-size: 1.1rem;
-  flex: 1 1 220px;
-  min-width: 200px;
-  text-align: center;
+
+/* # ANIMATION EFFECTS */
+/* Fade-in animation for scroll-triggered elements */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 .fade-in.visible {
   opacity: 1;
-  transition: opacity 0.8s;
+  transform: translateY(0);
 }
+
+/* # FOOTER COMPONENTS */
+/* Footer styling and layout */
 .footer {
-  background: none;
-  padding: 2rem 0 1rem 0;
-  color: #7c4d99;
+  background: #4b256d;
+  color: #fff;
+  padding: 2rem 0;
   text-align: center;
 }
 .footer-links a {
-  color: #a259e6;
+  color: #e0c3fc;
+  margin: 0 1rem;
   text-decoration: none;
-  margin: 0 0.5em;
-  font-size: 1rem;
 }
 .footer-links a:hover {
-  text-decoration: underline;
+  color: #fff;
 }
+
+/* # SCROLL TO TOP BUTTON */
+/* Fixed scroll-to-top button styling */
 .scroll-top-btn {
   position: fixed;
-  right: 2rem;
   bottom: 2rem;
+  right: 2rem;
   background: #a259e6;
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 2rem;
-  box-shadow: 0 2px 8px #e0c3fc80;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s, transform 0.2s;
+  z-index: 1000;
 }
 .scroll-top-btn:hover {
   background: #7c4d99;
+  transform: scale(1.1);
 }
+
+/* # MOBILE MENU */
+/* Mobile navigation menu styling */
 .mobile_menu {
   display: none;
 }
+
+/* # RESPONSIVE DESIGN */
+/* Mobile-first responsive breakpoints */
 @media (max-width: 900px) {
   .grid {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
   }
   .app-preview {
-    min-width: 0;
+    min-width: 250px;
   }
   .app-preview-box {
-    width: 100%;
-    height: 300px;
+    width: 280px;
+    height: 380px;
   }
   .features-list {
     flex-direction: column;
-    gap: 1rem;
   }
 }
